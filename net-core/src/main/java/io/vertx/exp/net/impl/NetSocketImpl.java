@@ -1,4 +1,4 @@
-package io.vertx.core.tcp.impl;
+package io.vertx.exp.net.impl;
 
 
 import io.netty.buffer.ByteBuf;
@@ -23,8 +23,8 @@ import io.vertx.core.net.impl.SslHandshakeCompletionHandler;
 import io.vertx.core.net.impl.VertxHandler;
 import io.vertx.core.spi.metrics.TCPMetrics;
 import io.vertx.core.streams.impl.InboundBuffer;
-import io.vertx.core.tcp.NetSocket;
-import io.vertx.core.tcp.NetSocketInternal;
+import io.vertx.exp.net.NetSocket;
+import io.vertx.exp.net.NetSocketInternal;
 
 import java.io.File;
 import java.io.IOException;

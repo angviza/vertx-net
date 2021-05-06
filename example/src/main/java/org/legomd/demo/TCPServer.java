@@ -1,5 +1,6 @@
 package org.legomd.demo;
 
+import io.vertx.iot.mqtt.MqttVerticle;
 import org.legomd.demo.proto.modbus.ModbusRouter;
 import org.legomd.demo.proto.jt708.JT708Router;
 import io.vertx.core.DeploymentOptions;
@@ -18,8 +19,9 @@ public class TCPServer  {
         Vertx vertx = Vertx.vertx();
         DeploymentOptions opt=new DeploymentOptions();
         opt.setInstances(Runtime.getRuntime().availableProcessors());
-        vertx.deployVerticle(ModbusRouter.class.getName());
-        vertx.deployVerticle(JT708Router.class.getName());
+//        vertx.deployVerticle(ModbusRouter.class.getName());
+//        vertx.deployVerticle(JT708Router.class.getName());
+        vertx.deployVerticle(MqttVerticle.class.getName());
 
     }
 

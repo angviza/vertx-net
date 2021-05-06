@@ -1,4 +1,4 @@
-package io.vertx.core.tcp.impl;
+package io.vertx.exp.net.impl;
 
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -29,8 +29,8 @@ import io.vertx.core.spi.metrics.MetricsProvider;
 import io.vertx.core.spi.metrics.TCPMetrics;
 import io.vertx.core.spi.metrics.VertxMetrics;
 import io.vertx.core.streams.ReadStream;
-import io.vertx.core.tcp.NetServer;
-import io.vertx.core.tcp.NetSocket;
+import io.vertx.exp.net.NetServer;
+import io.vertx.exp.net.NetSocket;
 
 import java.net.InetSocketAddress;
 import java.util.*;
