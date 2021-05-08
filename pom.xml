@@ -22,8 +22,7 @@
     </modules>
 
     <properties>
-        <log4j.version>2.13.3</log4j.version>
-        <slf4j-log4j12.version>1.7.30</slf4j-log4j12.version>
+<!--        <log4j.version>2.13.3</log4j.version>-->
     </properties>
 
 

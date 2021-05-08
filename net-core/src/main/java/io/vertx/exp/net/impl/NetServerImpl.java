@@ -68,7 +68,8 @@ public class NetServerImpl<T> implements Closeable, MetricsProvider, NetServer<T
     private Handler<NetSocket<T>> handler;
     private Handler<Void> endHandler;
     private Handler<Throwable> exceptionHandler;
-    private List<ChannelHandler> handlers = new ArrayList<>();
+    private List<ChannelHandler> handlerIns = new ArrayList<>();
+    Class<? extends ChannelHandler> []handlers;
     private static final Map<ServerID, NetServerImpl> sharedNetServers = new HashMap();
 
     public NetServerImpl(VertxInternal vertx, NetServerOptions options) {
@@ -86,18 +87,14 @@ public class NetServerImpl<T> implements Closeable, MetricsProvider, NetServer<T
     }
 
     public static <T> NetServer<T> create(VertxInternal vertx, NetServerOptions options, Class<? extends ChannelHandler>... handlers) {
-      List<ChannelHandler> hds= Arrays.stream(handlers).map(c -> {
-            try {
-                return c.getDeclaredConstructor().newInstance();
-            } catch (Exception e) {
-                return null;
-            }
-        }).collect(Collectors.toList());
-        return create(vertx,options,hds);
+        NetServerImpl netServer = new NetServerImpl<T>(vertx, options);
+        netServer.handlers = handlers;
+        return netServer;
     }
+
     public static <T> NetServer<T> create(VertxInternal vertx, NetServerOptions options, List<ChannelHandler> handlers) {
         NetServerImpl netServer = new NetServerImpl<T>(vertx, options);
-        netServer.handlers=handlers;
+        netServer.handlerIns = handlers;
         return netServer;
     }
 
@@ -164,8 +161,16 @@ public class NetServerImpl<T> implements Closeable, MetricsProvider, NetServer<T
         if (options.getIdleTimeout() > 0) {
             pipeline.addLast("idle", new IdleStateHandler(0, 0, options.getIdleTimeout(), options.getIdleTimeoutUnit()));
         }
-
-        handlers.forEach(pipeline::addLast);
+//        List<ChannelHandler> hds=
+//        .collect(Collectors.toList());
+//        handlers
+                Arrays.stream(handlers).map(c -> {
+            try {
+                return c.getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                return null;
+            }
+        }).forEach(pipeline::addLast);
 
     }
 
