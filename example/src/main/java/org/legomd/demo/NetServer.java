@@ -1,5 +1,6 @@
 package org.legomd.demo;
 
+import io.vertx.iot.mqtt.MqttVerticle;
 import org.legomd.demo.proto.modbus.ModbusRouter;
 import org.legomd.demo.proto.jt708.JT708Router;
 import io.vertx.core.DeploymentOptions;
@@ -22,7 +23,7 @@ public class NetServer {
         vertx.deployVerticle(MQTTRouter.class.getName());
 //        vertx.deployVerticle(ModbusRouter.class.getName());
 //        vertx.deployVerticle(JT708Router.class.getName());
-
+        vertx.deployVerticle(MqttVerticle.class.getName());
     }
 
 

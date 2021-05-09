@@ -1,4 +1,4 @@
-package io.vertx.core.tcp;
+package io.vertx.exp.net;
 
 import io.vertx.codegen.annotations.Fluent;
 import io.vertx.codegen.annotations.GenIgnore;

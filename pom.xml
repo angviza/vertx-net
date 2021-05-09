@@ -4,114 +4,60 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.dflc.framework</groupId>
+        <artifactId>legomd-framework</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>org.legomd</groupId>
     <artifactId>vertx-net</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>core</module>
-        <module>modbus</module>
+        <module>net-core</module>
+        <module>net-modbus</module>
         <module>example</module>
+        <module>net-mqtt</module>
     </modules>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
-        <vertx.version>3.9.7</vertx.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-
-
-        <log4j.version>2.13.3</log4j.version>
-        <slf4j-log4j12.version>1.7.30</slf4j-log4j12.version>
+<!--        <log4j.version>2.13.3</log4j.version>-->
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- https://mvnrepository.com/artifact/io.vertx/vertx-dependencies -->
-            <dependency>
-                <groupId>io.vertx</groupId>
-                <artifactId>vertx-dependencies</artifactId>
-                <version>${vertx.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-core</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
         </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-codegen</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.30</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j-log4j12.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-
-                    <!-- 解决冲突 -->
-                    <!-- https://github.com/dano/vertx-lombok/blob/master/pom.xml -->
-                    <annotationProcessors>
-                        <annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
-                        <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor
-                        </annotationProcessor>
-                    </annotationProcessors>
-                    <generatedSourcesDirectory>
-                        ${project.basedir}/src/main/generated
-                    </generatedSourcesDirectory>
-
-                    <compilerArgs>
-                        <arg>-AoutputDirectory=${project.basedir}/src/main</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+        </repository>
+        <repository>
+            <id>alijcenter</id>
+            <name>aliyun jcenter</name>
+            <url>https://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>rdc-releases-codeup</id>
+            <name>rdc aliyun release</name>
+            <url>https://packages.aliyun.com/maven/repository/2052307-release-mS0Dz4/</url>
+        </repository>
+        <repository>
+            <id>rdc-snapshots-codeup</id>
+            <name>rdc aliyun snapshot</name>
+            <url>https://packages.aliyun.com/maven/repository/2052307-snapshot-mmf3YL/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

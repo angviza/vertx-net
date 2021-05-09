@@ -8,8 +8,8 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.impl.VertxInternal;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.net.NetServerOptions;
-import io.vertx.core.tcp.NetServer;
-import io.vertx.core.tcp.impl.NetServerImpl;
+import io.vertx.exp.net.NetServer;
+import io.vertx.exp.net.impl.NetServerImpl;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.TimeUnit;
