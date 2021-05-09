@@ -11,16 +11,20 @@
 
     <artifactId>example</artifactId>
 
-<dependencies>
-    <dependency>
-        <groupId>org.legomd</groupId>
-        <artifactId>net-core</artifactId>
-        <version>${project.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.legomd</groupId>
-        <artifactId>modbus</artifactId>
-        <version>${project.version}</version>
-    </dependency>
-</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.legomd</groupId>
+            <artifactId>net-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.legomd</groupId>
+            <artifactId>modbus</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-mqtt</artifactId>
+        </dependency>
+    </dependencies>
 </project>

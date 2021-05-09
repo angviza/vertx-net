@@ -19,6 +19,7 @@ package org.legomd.net.modbus.codec;
 
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageCodec;
 import org.legomd.net.modbus.core.ModbusPdu;
