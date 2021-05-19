@@ -47,12 +47,12 @@
         </repository>
         <repository>
             <id>rdc-releases-codeup</id>
-            <name>rdc aliyun release</name>
+            <name>rdc releases codeup</name>
             <url>https://packages.aliyun.com/maven/repository/2052307-release-mS0Dz4/</url>
         </repository>
         <repository>
             <id>rdc-snapshots-codeup</id>
-            <name>rdc aliyun snapshot</name>
+            <name>rdc snapshots codeup</name>
             <url>https://packages.aliyun.com/maven/repository/2052307-snapshot-mmf3YL/</url>
             <snapshots>
                 <enabled>true</enabled>
