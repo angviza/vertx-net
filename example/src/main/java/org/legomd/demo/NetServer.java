@@ -20,7 +20,7 @@ public class NetServer {
         opt.setInstances(Runtime.getRuntime().availableProcessors());
 //        vertx.deployVerticle(MQTTRouter.class.getName());
 //        vertx.deployVerticle(ModbusRouter.class.getName());
-//        vertx.deployVerticle(JT708Router.class.getName());
+        vertx.deployVerticle(JT708Router.class.getName());
 //        vertx.deployVerticle(MqttVerticle.class.getName());
     }
 
