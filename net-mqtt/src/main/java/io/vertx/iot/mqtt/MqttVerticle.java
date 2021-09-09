@@ -2,18 +2,19 @@ package io.vertx.iot.mqtt;
 
 
 import io.netty.handler.codec.mqtt.MqttQoS;
-import io.reactivex.Completable;
-import io.reactivex.Single;
+
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
 import io.vertx.core.impl.VertxInternal;
 import io.vertx.core.json.JsonObject;
 import io.vertx.iot.mqtt.container.MqttSessionContainer;
 import io.vertx.iot.mqtt.domain.MqttSession;
 import io.vertx.mqtt.MqttServerOptions;
-import io.vertx.reactivex.core.AbstractVerticle;
-import io.vertx.reactivex.core.buffer.Buffer;
-import io.vertx.reactivex.mqtt.MqttEndpoint;
-import io.vertx.reactivex.mqtt.MqttServer;
-import io.vertx.reactivex.mqtt.MqttTopicSubscription;
+import io.vertx.rxjava3.core.AbstractVerticle;
+import io.vertx.rxjava3.core.buffer.Buffer;
+import io.vertx.rxjava3.mqtt.MqttEndpoint;
+import io.vertx.rxjava3.mqtt.MqttServer;
+import io.vertx.rxjava3.mqtt.MqttTopicSubscription;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.Charset;
@@ -39,14 +40,7 @@ public class MqttVerticle extends AbstractVerticle {
                 MqttServer mqttServer = MqttServer.create(vertx, options);
                 mqttServer
                         .endpointHandler(this::endpointHandler)
-                        .listen(cfg.getInteger("port", MQTT_SERVER_PORT), cfg.getString("host", MQTT_SERVER_HOST), done -> {
-
-                            if (done.succeeded()) {
-                                log.info("MQTT server started on port {}", done.result().actualPort());
-                            } else {
-                                log.error("MQTT server not started", done.cause());
-                            }
-                        });
+                        .listen(cfg.getInteger("port", MQTT_SERVER_PORT), cfg.getString("host", MQTT_SERVER_HOST));
             } catch (Throwable e) {
                 emitter.onError(e);
             }
@@ -166,13 +160,7 @@ public class MqttVerticle extends AbstractVerticle {
     @Override
     public Completable rxStop() {
         if (mqttServer != null) {
-            mqttServer.close(res -> {
-                if (res.succeeded()) {
-                    log.info("Server is nowclosed");
-                } else {
-                    log.info("closefailed");
-                }
-            });
+            mqttServer.close();
         }
         return super.rxStop();
     }

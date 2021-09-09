@@ -1,8 +1,9 @@
 package io.vertx.iot.mqtt.handler;
 
 import io.netty.handler.codec.mqtt.MqttQoS;
-import io.vertx.reactivex.core.buffer.Buffer;
-import io.vertx.reactivex.mqtt.MqttEndpoint;
+import io.vertx.rxjava3.core.buffer.Buffer;
+import io.vertx.rxjava3.mqtt.MqttEndpoint;
+import io.vertx.rxjava3.mqtt.MqttTopicSubscription;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.Charset;

@@ -1,8 +1,9 @@
 package io.vertx.iot.mqtt.container;
 
+
 import io.vertx.iot.mqtt.domain.MqttSession;
-import io.vertx.reactivex.mqtt.MqttEndpoint;
-import io.vertx.reactivex.mqtt.MqttTopicSubscription;
+import io.vertx.rxjava3.mqtt.MqttEndpoint;
+import io.vertx.rxjava3.mqtt.MqttTopicSubscription;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;

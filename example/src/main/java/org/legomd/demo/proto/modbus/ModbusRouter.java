@@ -3,7 +3,6 @@ package org.legomd.demo.proto.modbus;
 import io.netty.channel.Channel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.util.AttributeKey;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.impl.VertxInternal;
 import io.vertx.core.net.NetServerOptions;
